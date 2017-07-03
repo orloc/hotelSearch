@@ -48,6 +48,7 @@ class ApiClientProvider {
     getSource(source) {
         const deferred = q.defer();
 
+        // taking advantage of default GET laziness here
         request(source, (err, req, body) => {
             if (err) {
                 deferred.reject(err);
