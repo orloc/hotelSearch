@@ -18,6 +18,10 @@ const provider = new ClientProvider(`${apiUrl}/${apiPath}`);
 const aggregator = new Aggregator();
 
 app.use(bodyParser.json());
+app.use((err, req, res, next) => {
+    console.error(err.stack);  
+    res.status(500).send({ message: 'Sorry! Bad things! We have dispatched the chipmunks who are all over fixing it!'});
+});
 
 /**
  * Base route which executes our promise chain and aggregates our results

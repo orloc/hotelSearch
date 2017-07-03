@@ -77,6 +77,7 @@ var ApiClientProvider = function () {
         value: function getSource(source) {
             var deferred = q.defer();
 
+            // taking advantage of default GET laziness here
             (0, _request2.default)(source, function (err, req, body) {
                 if (err) {
                     deferred.reject(err);

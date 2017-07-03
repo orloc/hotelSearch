@@ -38,6 +38,10 @@ var provider = new _ApiClientProvider2.default(apiUrl + '/' + apiPath);
 var aggregator = new _ProviderResponseAggregator2.default();
 
 app.use(_bodyParser2.default.json());
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send({ message: 'Sorry! Bad things! We have dispatched the chipmunks who are all over fixing it!' });
+});
 
 /**
  * Base route which executes our promise chain and aggregates our results
