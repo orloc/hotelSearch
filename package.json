@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp && node ./dist/app.js"
+    "dev": "gulp && node ./dist/app.js",
+    "start": "node ./dist/app.js"
   },
   "author": "",
   "license": "ISC",
