@@ -54,33 +54,33 @@ var ProviderResponseAggregator = function () {
         key: "doSort",
         value: function doSort(a, b) {
             var result = new Array(a.length + b.length);
-            var aCount = 0,
-                bCount = 0,
-                rCount = 0;
+            var counts = {
+                a: 0, b: 0, r: 0
+            };
 
             // while we have matching indexes compare and sort appropriately
-            while (aCount < a.length && bCount < b.length) {
-                if (a[aCount].ecstasy > b[bCount].ecstasy) {
-                    result[rCount] = a[aCount];
-                    aCount++;
+            while (counts.a < a.length && counts.b < b.length) {
+                if (a[counts.a].ecstasy > b[counts.b].ecstasy) {
+                    result[counts.r] = a[counts.a];
+                    counts.a++;
                 } else {
-                    result[rCount] = b[bCount];
-                    bCount++;
+                    result[counts.r] = b[counts.b];
+                    counts.b++;
                 }
-                rCount++;
+                counts.r++;
             }
 
             // sort out the rest in which ever list had more items
-            while (aCount < a.length) {
-                result[rCount] = a[aCount];
-                aCount++;
-                rCount++;
+            while (counts.a < a.length) {
+                result[counts.r] = a[counts.a];
+                counts.a++;
+                counts.r++;
             }
 
-            while (bCount < b.length) {
-                result[rCount] = b[bCount];
-                bCount++;
-                rCount++;
+            while (counts.b < b.length) {
+                result[counts.r] = b[counts.b];
+                counts.b++;
+                counts.r++;
             }
 
             return result;
